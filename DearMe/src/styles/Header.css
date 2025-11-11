@@ -12,6 +12,7 @@
     justify-content: space-between;
     padding: 0 42px;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 .header-logo {
