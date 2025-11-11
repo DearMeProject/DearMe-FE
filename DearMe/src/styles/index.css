@@ -25,3 +25,8 @@ h1 {
   line-height: 1.1;
 }
 
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/Gelasio-Regular.ttf');
+}
+
