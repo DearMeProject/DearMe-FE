@@ -30,3 +30,8 @@ h1 {
   src: url('/fonts/Gelasio-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Gowun Batang';
+  src: url('/fonts/GowunBatang-Regular.ttf');
+}
+
