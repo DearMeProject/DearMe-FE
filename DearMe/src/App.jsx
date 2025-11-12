@@ -4,6 +4,7 @@ import Background from './components/Background';
 import Header from './components/Header';
 import WelcomeSections from './components/WelcomeSections';
 import BottomBackground from './components/BottomBackground';
+import CalendarSection from './components/CalendarSection';
 import './styles/App.css';
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
       <Background />
       <Header/>
       <WelcomeSections/>
-      <BottomBackground/>
+      <BottomBackground>
+        <CalendarSection/>
+      </BottomBackground>
     </div>
   )
 }

@@ -1,0 +1,82 @@
+.react-calendar {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Gowun Batang', serif;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: transparent !important;
+  cursor: default !important;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.react-calendar__navigation button {
+  color: white;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.react-calendar__tile {
+  background: transparent;
+  position: relative;
+  color: white;
+  font-size: 1.1rem;
+  cursor: default !important;
+}
+
+.react-calendar__month-view .react-calendar__tile {
+  border-right: 1px solid rgba(235, 236, 236, 0.3) !important;
+  border-bottom: 1px solid rgba(235, 236, 236, 0.3) !important;
+  text-align: left;
+  padding-bottom: 70px;
+}
+
+.react-calendar__month-view .react-calendar__tile:nth-child(7n) {
+  border-right: none !important;
+}
+
+.react-calendar__month-view .react-calendar__tile:nth-last-child(-n + 7) {
+  border-bottom: none !important;
+}
+
+.react-calendar__tile--now {
+  background: transparent;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: transparent;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background: none;
+}
+
+.calendar-plus {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer !important;
+}
