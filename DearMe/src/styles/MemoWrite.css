@@ -1,0 +1,111 @@
+.memo-write-container {
+    position: fixed;
+    background-color: #ffffff;
+    width: 500px;
+    height: 500px;
+    z-index: 1000;
+
+    left: 50%;
+    top: 250px;
+    transform: translateX(-50%);
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.memo-write-container p {
+    margin: 0;
+}
+
+.memo-box-date {
+    color: #000000;
+    font-family: 'Gelasio';
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    padding-left: 5%;
+    padding-top: 25px;
+}
+
+.memo-write-welcome-message {
+    color: #000000;
+    font-family: 'Gowun Batang';
+    padding-left: 5%;
+}
+
+.memo-write-emoji-select-section {
+    padding-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.memo-write-emoji-select-section-text {
+    font-family: 'Gowun Batang';
+    color: #000000;
+}
+
+.memo-write-title-input {
+    font-family: 'Gowun Batang', serif;
+    font-size: 16px;
+    border: 1px solid #E2E2E2;
+    border-radius: 8px;
+    padding: 10px;
+
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.memo-write-content-textarea {
+    font-family: 'Gowun Batang', serif;
+    font-size: 15px;
+    border: 1px solid #E2E2E2;
+    border-radius: 8px;
+    padding: 10px;
+
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 180px;
+    resize: none;
+}
+
+.memo-write-title-input:focus,
+.memo-write-content-textarea:focus {
+    outline: 1px solid #000000;
+    border-color: #000000;
+}
+
+.memo-box-buttons {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.memo-box-button-close,
+.memo-box-button-add {
+    width: 95px;
+    height: 35px;
+    border-radius: 15px;
+}
+
+.memo-box-button-close {
+    background-color: #ffffff;
+    border: 1px solid #A6A6AA;
+    color: #000000;
+    cursor: pointer;
+}
+
+.memo-box-button-add {
+    background-color: #000000;
+    border: 1px solid #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
