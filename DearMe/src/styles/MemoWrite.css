@@ -3,7 +3,7 @@
     background-color: #ffffff;
     width: 500px;
     height: 500px;
-    z-index: 1000;
+    z-index: 1001;
 
     left: 50%;
     top: 250px;
@@ -47,7 +47,7 @@
 }
 
 .memo-write-title-input {
-    font-family: 'Gowun Batang', serif;
+    font-family: 'Gowun Batang';
     font-size: 16px;
     border: 1px solid #E2E2E2;
     border-radius: 8px;
@@ -59,7 +59,7 @@
 }
 
 .memo-write-content-textarea {
-    font-family: 'Gowun Batang', serif;
+    font-family: 'Gowun Batang';
     font-size: 15px;
     border: 1px solid #E2E2E2;
     border-radius: 8px;
