@@ -18,7 +18,7 @@ function MemoWrite({ parsingDate, onClose }) {
                 type="text"
                 className="memo-write-title-input"
                 placeholder="제목을 입력하세요."
-                maxLength={20} // (선택 사항) 글자 수 제한
+                maxLength={20} 
             />
             <textarea
                 className="memo-write-content-textarea"
