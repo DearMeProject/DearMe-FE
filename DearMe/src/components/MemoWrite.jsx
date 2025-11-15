@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import '../styles/MemoWrite.css';
 import usePeriodTime from '../hooks/useTimePeriod';
+import EmojiList from './EmojiList';
 
 function MemoWrite({ parsingDate, onClose }) {
 
     const period = usePeriodTime();
     const welcomeMessage = period === 'day' ? '오늘 하루를 기분좋게 시작해봐요! 🍀' : '오늘 하루는 어땠나요? 🌕';
 
+    const [selectedEmoji, setSelectedEmoji] = useState('');
 
     return (
         <div className='memo-write-container'>
@@ -13,12 +16,13 @@ function MemoWrite({ parsingDate, onClose }) {
             <p className='memo-write-welcome-message'>{welcomeMessage}</p>
             <div className='memo-write-emoji-select-section'>
                 <p className='memo-write-emoji-select-section-text'>오늘 내 감정은?</p>
+                <EmojiList setSelectedEmoji={setSelectedEmoji} />
             </div>
             <input
                 type="text"
                 className="memo-write-title-input"
                 placeholder="제목을 입력하세요."
-                maxLength={20} 
+                maxLength={20}
             />
             <textarea
                 className="memo-write-content-textarea"
