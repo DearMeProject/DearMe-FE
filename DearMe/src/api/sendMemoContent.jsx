@@ -1,5 +1,6 @@
 import axios from 'axios';
 import getMemos from './getMemos';
+import getClientId from './clientId';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -15,9 +16,7 @@ const sendMemoContent = async (memo) => {
             }
         });
 
-    if (response.status === 201){
-        await getMemos();
-    }
+    return response;
 };
 
 export default sendMemoContent;

@@ -2,6 +2,14 @@ import '../styles/MemoCard.css';
 import { useState } from "react";
 import MemoRead from './MemoRead';
 
+const STRINGTOEMOJI = {
+  'HAPPY':"😀",
+  'NEUTRAL': '😐',
+  'SLEEPY': '😴',
+  'SAD': '😢',
+  'ANGRY': '😡'
+}
+
 function MemoCard({ memosByDate }) {
 
     const [selectedMemo, setSelectedMemo] = useState(null);
@@ -16,7 +24,7 @@ function MemoCard({ memosByDate }) {
                         onClick={() => {
                             setSelectedMemo(memo);
                         }}>
-                        <p className='memo-card-emoji'>{memo.emoji}</p>
+                        <p className='memo-card-emoji'>{STRINGTOEMOJI[memo.emoji]}</p>
                         <p className='memo-card-title'>{memo.title}</p>
                     </div>
                 ))

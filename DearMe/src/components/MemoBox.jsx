@@ -4,7 +4,7 @@ import '../styles/MemoBox.css';
 import MemoCard from "./MemoCard";
 import MemoWrite from "./MemoWrite";
 
-function MemoBox({ memosByDate, selectedDate, onClose }) {
+function MemoBox({ refreshMemos, memosByDate, selectedDate, onClose }) {
     
     const parsingDate = () => {
         const memoDate = selectedDate.split('-');
@@ -34,7 +34,7 @@ function MemoBox({ memosByDate, selectedDate, onClose }) {
                     </button>
                 </div>
             </div>
-            {clickedAddButton && <MemoWrite parsingDate={parsingDate()} onClose={() => setClickedAddButton(false)}/>}
+            {clickedAddButton && <MemoWrite refreshMemos={refreshMemos} parsingDate={parsingDate()} onClose={() => setClickedAddButton(false)}/>}
         </>,
         document.body
     );
