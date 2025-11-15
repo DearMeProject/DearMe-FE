@@ -2,13 +2,36 @@ import { useState } from 'react';
 import '../styles/MemoWrite.css';
 import usePeriodTime from '../hooks/useTimePeriod';
 import EmojiList from './EmojiList';
+import sendMemoContent from '../api/sendMemoContent';
 
 function MemoWrite({ parsingDate, onClose }) {
 
     const period = usePeriodTime();
     const welcomeMessage = period === 'day' ? '오늘 하루를 기분좋게 시작해봐요! 🍀' : '오늘 하루는 어땠나요? 🌕';
 
+    const date = () => {
+        const pieces = parsingDate.split('.');
+        return `${pieces[0]}-${pieces[1]}-${pieces[2]}`
+    }
     const [selectedEmoji, setSelectedEmoji] = useState('');
+    const [memoTitle, setMemoTitle] = useState('');
+    const [memoContent, setMemoContent] = useState('');
+
+    const handleSubmit = async () => {
+        const memo = {
+            date: date,
+            title: memoTitle,
+            emoji: selectedEmoji,
+            content: memoContent
+        };
+
+        if (!memo.title || !memo.emoji || !memo.content) {
+            alert("이모티콘, 제목, 내용을 모두 입력해 주세요.")
+            return;
+        }
+
+        await sendMemoContent(memo);
+    }
 
     return (
         <div className='memo-write-container'>
@@ -23,19 +46,24 @@ function MemoWrite({ parsingDate, onClose }) {
                 className="memo-write-title-input"
                 placeholder="제목을 입력하세요."
                 maxLength={20}
+                value={memoTitle}
+                onChange={(e) => setMemoTitle(e.target.value)}
             />
             <textarea
                 className="memo-write-content-textarea"
                 placeholder="오늘의 이야기를 들려주세요."
+                value={memoContent}
+                onChange={(e) => setMemoContent(e.target.value)}
             />
+            
             <div className='memo-box-buttons'>
                 <button className='memo-box-button-close' onClick={onClose}>
                     닫기
                 </button>
                 <button
                     className='memo-box-button-add'
-                    onClick={() => {
-                        // 작성한 메모 서버로 보내기
+                    onClick={async () => {
+                        await handleSubmit();
                     }}>
                     작성하기
                 </button>

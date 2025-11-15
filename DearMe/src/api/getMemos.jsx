@@ -6,7 +6,6 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
 const getMemos = async () => {
 
     const currentClientId = await getClientId();
-    console.log(API_BASE_URL);
 
     const response = await axios.get(`${API_BASE_URL}/api/memos`, {
         headers: {
