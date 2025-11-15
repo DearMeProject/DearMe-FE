@@ -4,25 +4,37 @@ import usePeriodTime from '../hooks/useTimePeriod';
 import EmojiList from './EmojiList';
 import sendMemoContent from '../api/sendMemoContent';
 
-function MemoWrite({ parsingDate, onClose }) {
+const EMOTIONSCORE = {
+    '😊': 20,
+    '😐': 40,
+    '😴': 60,
+    '😢': 80,
+    '😡': 100,
+}
+
+function MemoWrite({ refreshMemos, parsingDate, onClose }) {
 
     const period = usePeriodTime();
     const welcomeMessage = period === 'day' ? '오늘 하루를 기분좋게 시작해봐요! 🍀' : '오늘 하루는 어땠나요? 🌕';
 
     const date = () => {
         const pieces = parsingDate.split('.');
-        return `${pieces[0]}-${pieces[1]}-${pieces[2]}`
+        return `${pieces[0]}-${pieces[1].padStart(2, '0')}-${pieces[2].padStart(2, '0')}`
     }
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [memoTitle, setMemoTitle] = useState('');
     const [memoContent, setMemoContent] = useState('');
 
+
     const handleSubmit = async () => {
+        const score = EMOTIONSCORE[selectedEmoji];
+
         const memo = {
-            date: date,
-            title: memoTitle,
+            date: date(),
             emoji: selectedEmoji,
-            content: memoContent
+            title: memoTitle,
+            emotionScore: score,
+            content: memoContent,
         };
 
         if (!memo.title || !memo.emoji || !memo.content) {
@@ -30,7 +42,11 @@ function MemoWrite({ parsingDate, onClose }) {
             return;
         }
 
-        await sendMemoContent(memo);
+        const response = await sendMemoContent(memo);
+        if(response.status === 201) {
+            await refreshMemos();
+            onClose();
+        }
     }
 
     return (
@@ -55,7 +71,7 @@ function MemoWrite({ parsingDate, onClose }) {
                 value={memoContent}
                 onChange={(e) => setMemoContent(e.target.value)}
             />
-            
+
             <div className='memo-box-buttons'>
                 <button className='memo-box-button-close' onClick={onClose}>
                     닫기

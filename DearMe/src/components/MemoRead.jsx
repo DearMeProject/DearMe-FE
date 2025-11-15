@@ -2,6 +2,21 @@
 import ReactDOM from "react-dom";
 import '../styles/MemoRead.css';
 
+const STRINGTOEMOJI = {
+    'HAPPY': "😀",
+    'NEUTRAL': '😐',
+    'SLEEPY': '😴',
+    'SAD': '😢',
+    'ANGRY': '😡'
+}
+
+const emojiState = {
+    '😊': '너무 좋아요!',
+    '😐': '평범해요',
+    '😢': '우울해요',
+    '😡': '너무 화나요!',
+    '😴': '피곤해요...'
+}
 
 function MemoRead({ onClose, memo }) {
 
@@ -9,15 +24,11 @@ function MemoRead({ onClose, memo }) {
     const parsingDate = () => {
         return `${memoDate[0]}.${memoDate[1]}.${memoDate[2]}`
     }
-    const emojiState = {
-        '😊': '너무 좋아요!',
-        '😐': '평범해요',
-        '😢': '우울해요',
-        '😡': '너무 화나요!',
-        '😴': '피곤해요...'
-    }
     const memoContent = '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세'
     // 서버에서 받아와야할 데이터
+    
+    const emoji = STRINGTOEMOJI[memo.emoji];
+    const emojiText = emojiState[emoji];
 
     return ReactDOM.createPortal(
         <>
@@ -25,8 +36,8 @@ function MemoRead({ onClose, memo }) {
                 <p className='memo-box-date'>{parsingDate()}</p>
                 <div className='memo-write-emoji-select-section'>
                     <p className='memo-write-emoji-select-section-text'>오늘 내 감정은?</p>
-                    <p className='memo-read-emoji'>{memo.emoji}</p>
-                    <p className='memo-read-emoji-state'>{emojiState[memo.emoji]}</p>
+                    <p className='memo-read-emoji'>{emoji}</p>
+                    <p className='memo-read-emoji-state'>{emojiText}</p>
                 </div>
                 <p className='memo-read-title-p'>{memo.title}</p>
                 <p className='memo-read-content-p'>{memoContent}</p>

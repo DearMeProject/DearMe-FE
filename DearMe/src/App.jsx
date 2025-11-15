@@ -13,14 +13,16 @@ import getMemos from './api/getMemos.jsx';
 
 function App() {
 
-  const [memos, setMemos] = useState([]);
+  const [memoList, setMemoList] = useState([]);
+  const refreshMemos = async () => {
+    const response = await getMemos();
+    setMemoList(response.data.data.memos);
+    console.log(response);
+    console.log("가져온 메모", response.data.data.memos);
+  }
 
   useEffect(() => {
-    const fetchMemos = async () => {
-      const response = await getMemos();
-      setMemos(response.data.memos);
-    };
-    fetchMemos();
+    refreshMemos();
   }, []);
 
   return (
@@ -30,9 +32,9 @@ function App() {
       <WelcomeSections />
       <BottomBackground>
         <div className="content-stack-wrapper">
-          <CalendarSection memos={memos} />
+          <CalendarSection memos={memoList} refreshMemos={refreshMemos}/>
           <div className="chat-button-container-below">
-            <GoChatButton memos={memos} />
+            <GoChatButton memos={memoList} />
           </div>
         </div>
       </BottomBackground>

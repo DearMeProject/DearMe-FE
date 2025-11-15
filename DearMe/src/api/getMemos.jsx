@@ -13,7 +13,7 @@ const getMemos = async () => {
         }
     });
 
-    return response.data;
+    return response
 };
 
 export default getMemos;
