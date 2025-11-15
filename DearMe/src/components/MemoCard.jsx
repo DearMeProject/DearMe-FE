@@ -2,14 +2,14 @@ import '../styles/MemoCard.css';
 import { useState } from "react";
 import MemoRead from './MemoRead';
 
-function MemoCard({ memoData }) {
+function MemoCard({ memosByDate }) {
 
     const [selectedMemo, setSelectedMemo] = useState(null);
 
     return (
         <>
             {
-                memoData.map((memo, index) => (
+                memosByDate.map((memo, index) => (
                     <div 
                         key={memo.memoId} 
                         className='memo-card-container'

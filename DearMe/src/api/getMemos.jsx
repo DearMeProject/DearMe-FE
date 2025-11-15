@@ -1,18 +1,20 @@
 import axios from 'axios';
 import getClientId from './clientId';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 const getMemos = async () => {
 
     const currentClientId = await getClientId();
+    console.log(API_BASE_URL);
 
-    const response = await axios.get('/api/memos', {
+    const response = await axios.get(`${API_BASE_URL}/api/memos`, {
         headers: {
             'X-Client-Id': currentClientId
         }
     });
 
     return response.data;
-
 };
 
 export default getMemos;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; // useEffect 추가
+import { useState, useEffect } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import useTimePeriod from './hooks/useTimePeriod';
 import Background from './components/Background';
@@ -9,7 +9,7 @@ import CalendarSection from './components/CalendarSection';
 import { ExitChatButton } from "./components/ChatButtons.jsx";
 import { GoChatButton } from "./components/ChatButtons.jsx";
 import './styles/App.css';
-import getMemos from './api/getMemos.jsx'; 
+import getMemos from './api/getMemos.jsx';
 
 function App() {
 
@@ -17,19 +17,11 @@ function App() {
 
   useEffect(() => {
     const fetchMemos = async () => {
-      try {
-        setIsLoading(true); 
-        const response = await getMemos(); 
-        setMemos(response.data.memos); 
-
-      } catch (err) {
-        console.error("App에서 메모 로드 실패:", err);
-      } 
+      const response = await getMemos();
+      setMemos(response.data.memos);
     };
-
-    fetchMemos(); 
-
-  }, []); 
+    fetchMemos();
+  }, []);
 
   return (
     <div>
@@ -38,7 +30,7 @@ function App() {
       <WelcomeSections />
       <BottomBackground>
         <div className="content-stack-wrapper">
-          <CalendarSection memos={memos} /> 
+          <CalendarSection memos={memos} />
           <div className="chat-button-container-below">
             <GoChatButton memos={memos} />
           </div>
