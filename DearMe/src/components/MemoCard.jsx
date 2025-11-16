@@ -1,6 +1,7 @@
 import '../styles/MemoCard.css';
 import { useState } from "react";
 import MemoRead from './MemoRead';
+import getMemoContent from '../api/getMemoContent';
 
 const STRINGTOEMOJI = {
   'HAPPY':"😀",
@@ -13,6 +14,13 @@ const STRINGTOEMOJI = {
 function MemoCard({ memosByDate }) {
 
     const [selectedMemo, setSelectedMemo] = useState(null);
+    const [memoContent, setMemoContent] = useState('');
+
+    const handleClick = async (memo) => {
+        const response = await getMemoContent(memo.memoId);
+        setMemoContent(response.data.content);
+        setSelectedMemo(memo);
+    }
 
     return (
         <>
@@ -21,8 +29,8 @@ function MemoCard({ memosByDate }) {
                     <div 
                         key={memo.memoId} 
                         className='memo-card-container'
-                        onClick={() => {
-                            setSelectedMemo(memo);
+                        onClick={async () => {
+                            await handleClick(memo)
                         }}>
                         <p className='memo-card-emoji'>{STRINGTOEMOJI[memo.emoji]}</p>
                         <p className='memo-card-title'>{memo.title}</p>
@@ -33,7 +41,8 @@ function MemoCard({ memosByDate }) {
             {selectedMemo && (
                 <MemoRead 
                     memo={selectedMemo} 
-                    onClose={() => setSelectedMemo(null)} 
+                    onClose={() => setSelectedMemo(null)}
+                    memoContent={memoContent}
                 />
             )}
         </>

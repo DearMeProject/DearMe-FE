@@ -18,14 +18,12 @@ const emojiState = {
     '😴': '피곤해요...'
 }
 
-function MemoRead({ onClose, memo }) {
+function MemoRead({ onClose, memo, memoContent }) {
 
     const memoDate = memo.date.split('-');
     const parsingDate = () => {
         return `${memoDate[0]}.${memoDate[1]}.${memoDate[2]}`
     }
-    const memoContent = '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세'
-    // 서버에서 받아와야할 데이터
     
     const emoji = STRINGTOEMOJI[memo.emoji];
     const emojiText = emojiState[emoji];
