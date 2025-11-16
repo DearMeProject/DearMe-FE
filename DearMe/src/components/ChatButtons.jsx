@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../styles/ChatButtons.css';
 import MemoSelect from './MemoSelect';
 
-function GoChatButton({ memos }) {
+function GoChatButton({ memos, setButtonPressed }) {
 
     const [isOpenedMemoSelect, setIsOpenendMemoSelect] = useState(false);
 
@@ -12,10 +12,10 @@ function GoChatButton({ memos }) {
                 onClick={() => {
                     setIsOpenendMemoSelect(true);
                 }}>
-                <span>내 이야기 털어놓기 💬</span>
+                <span>내 마음 알아가기 💬</span>
             </button>
 
-            {isOpenedMemoSelect && <MemoSelect memos={memos} onClose={() => setIsOpenendMemoSelect(false)} />}
+            {isOpenedMemoSelect && <MemoSelect memos={memos} onClose={() => setIsOpenendMemoSelect(false)} setButtonPressed={setButtonPressed} />}
         </div>
     )
 }
