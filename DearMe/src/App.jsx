@@ -17,8 +17,6 @@ function App() {
   const refreshMemos = async () => {
     const response = await getMemos();
     setMemoList(response.data.data.memos);
-    console.log(response);
-    console.log("가져온 메모", response.data.data.memos);
   }
 
   useEffect(() => {
