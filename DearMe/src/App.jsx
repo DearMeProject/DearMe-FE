@@ -18,6 +18,8 @@ function App() {
     setMemoList(response.data.data.memos);
   }
   const [buttonPressed, setButtonPressed] = useState(false);
+  const [selectedMemoIds, setSelectedMemoIds] = useState([]);
+  const [chatResponse, setChatResponse] = useState('');
 
   useEffect(() => {
     refreshMemos();
@@ -29,16 +31,29 @@ function App() {
       <Header />
       <WelcomeSections />
       <BottomBackground>
-        { !buttonPressed ? 
+        {!buttonPressed ?
           <div className="content-stack-wrapper">
             <CalendarSection memos={memoList} refreshMemos={refreshMemos} />
             <div className="chat-button-container-below">
-              <GoChatButton memos={memoList} setButtonPressed={setButtonPressed} />
+              <GoChatButton
+                memos={memoList}
+                setButtonPressed={setButtonPressed}
+                selectedMemoIds={selectedMemoIds}
+                setSelectedMemoIds={setSelectedMemoIds}
+                setChatResponse={setChatResponse} />
             </div>
           </div>
           :
           <div className='chat-screen-container'>
-            <ChatSection/>
+            <ChatSection
+              memos={memoList}
+              selectedMemoIds={selectedMemoIds}
+              chatResponse={chatResponse} />
+            <div className="chat-button-container-below">
+              <ExitChatButton
+                setButtonPressed={setButtonPressed}
+                setSelectedMemoIds={setSelectedMemoIds} />
+            </div>
           </div>
         }
       </BottomBackground>
