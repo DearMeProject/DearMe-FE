@@ -19,11 +19,6 @@ const emojiState = {
 }
 
 function MemoRead({ onClose, memo, memoContent }) {
-
-    const memoDate = memo.date.split('-');
-    const parsingDate = () => {
-        return `${memoDate[0]}.${memoDate[1]}.${memoDate[2]}`
-    }
     
     const emoji = STRINGTOEMOJI[memo.emoji];
     const emojiText = emojiState[emoji];
@@ -31,7 +26,7 @@ function MemoRead({ onClose, memo, memoContent }) {
     return ReactDOM.createPortal(
         <>
             <div className='memo-read-container'>
-                <p className='memo-box-date'>{parsingDate()}</p>
+                <p className='memo-box-date'>{memo.date}</p>
                 <div className='memo-write-emoji-select-section'>
                     <p className='memo-write-emoji-select-section-text'>오늘 내 감정은?</p>
                     <p className='memo-read-emoji'>{emoji}</p>

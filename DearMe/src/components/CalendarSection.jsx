@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import '../styles/CalendarSection.css';
 
 const STRINGTOEMOJI = {
-  'HAPPY':"😀",
+  'HAPPY': "😀",
   'NEUTRAL': '😐',
   'SLEEPY': '😴',
   'SAD': '😢',
@@ -45,7 +45,10 @@ function CalendarSection({ memos, refreshMemos }) {
         formatDay={(locale, date) => date.getDate()}
         onActiveStartDateChange={handleCurMonth}
         tileContent={({ date, view }) => {
-          const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+          const year = String(date.getFullYear());
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          const dateKey = `${year}-${month}-${day}`;
           const dailyMemos = memoMap.get(dateKey) || [];
           const isCurrentMonth = curMonth === date.getMonth() + 1;
           return (view === 'month' && isCurrentMonth) ? (
