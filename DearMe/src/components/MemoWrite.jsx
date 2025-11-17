@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import '../styles/MemoWrite.css';
-import usePeriodTime from '../hooks/useTimePeriod';
-import EmojiList from './EmojiList';
-import sendMemoContent from '../api/sendMemoContent';
+import usePeriodTime from '../hooks/useTimePeriod.jsx';
+import EmojiList from './EmojiList.jsx';
+import sendMemoContent from '../api/sendMemoContent.jsx';
 
 const EMOTIONSCORE = {
     '😊': 20,

@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import '../styles/MemoSelect.css';
-import sendMemoIds from "../api/sendMemoIds";
+import sendMemoIds from "../api/sendMemoIds.jsx";
 
 const STRINGTOEMOJI = {
     'HAPPY': "😀",

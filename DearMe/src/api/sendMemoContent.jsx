@@ -1,6 +1,5 @@
 import axios from 'axios';
-import getMemos from './getMemos';
-import getClientId from './clientId';
+import getClientId from './clientId.jsx';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 

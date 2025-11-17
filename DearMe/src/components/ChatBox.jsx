@@ -1,5 +1,5 @@
 import '../styles/ChatBox.css'
-import MemoCard from './MemoCard';
+import MemoCard from './MemoCard.jsx';
 
 function AIChatBox({ text }) {
     return (

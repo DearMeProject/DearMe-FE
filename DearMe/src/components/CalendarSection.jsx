@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import Calendar from "react-calendar";
-import MemoBox from "./MemoBox";
+import MemoBox from "./MemoBox.jsx";
 import 'react-calendar/dist/Calendar.css';
 import '../styles/CalendarSection.css';
 
