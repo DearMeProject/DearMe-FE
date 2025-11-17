@@ -6,11 +6,6 @@ import MemoWrite from "./MemoWrite";
 
 function MemoBox({ refreshMemos, memosByDate, selectedDate, onClose }) {
     
-    const parsingDate = () => {
-        const memoDate = selectedDate.split('-');
-        return `${memoDate[0]}.${memoDate[1]}.${memoDate[2]}`
-    }
-
     const isAddButtonDisabled = memosByDate.length >= 3;
     const [clickedAddButton, setClickedAddButton] = useState(false);
 
@@ -18,7 +13,7 @@ function MemoBox({ refreshMemos, memosByDate, selectedDate, onClose }) {
         <>
             <div className="background-overlay" onClick={onClose}></div>
             <div className="memo-box-container">
-                <p className='memo-box-date'>{parsingDate()}</p>
+                <p className='memo-box-date'>{selectedDate}</p>
                 <MemoCard memosByDate={memosByDate} />
                 <div className='memo-box-buttons'>
                     <button className='memo-box-button-close' onClick={onClose}>
@@ -34,7 +29,7 @@ function MemoBox({ refreshMemos, memosByDate, selectedDate, onClose }) {
                     </button>
                 </div>
             </div>
-            {clickedAddButton && <MemoWrite refreshMemos={refreshMemos} parsingDate={parsingDate()} onClose={() => setClickedAddButton(false)}/>}
+            {clickedAddButton && <MemoWrite refreshMemos={refreshMemos} selectedDate={selectedDate} onClose={() => setClickedAddButton(false)}/>}
         </>,
         document.body
     );

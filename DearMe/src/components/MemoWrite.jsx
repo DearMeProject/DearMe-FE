@@ -12,15 +12,11 @@ const EMOTIONSCORE = {
     '😡': 100,
 }
 
-function MemoWrite({ refreshMemos, parsingDate, onClose }) {
+function MemoWrite({ refreshMemos, selectedDate, onClose }) {
 
     const period = usePeriodTime();
     const welcomeMessage = period === 'day' ? '오늘 하루를 기분좋게 시작해봐요! 🍀' : '오늘 하루는 어땠나요? 🌕';
 
-    const date = () => {
-        const pieces = parsingDate.split('.');
-        return `${pieces[0]}-${pieces[1].padStart(2, '0')}-${pieces[2].padStart(2, '0')}`
-    }
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [memoTitle, setMemoTitle] = useState('');
     const [memoContent, setMemoContent] = useState('');
@@ -30,7 +26,7 @@ function MemoWrite({ refreshMemos, parsingDate, onClose }) {
         const score = EMOTIONSCORE[selectedEmoji];
 
         const memo = {
-            date: date(),
+            date: selectedDate,
             emoji: selectedEmoji,
             title: memoTitle,
             emotionScore: score,
@@ -51,7 +47,7 @@ function MemoWrite({ refreshMemos, parsingDate, onClose }) {
 
     return (
         <div className='memo-write-container'>
-            <p className='memo-box-date'>{parsingDate}</p>
+            <p className='memo-box-date'>{selectedDate}</p>
             <p className='memo-write-welcome-message'>{welcomeMessage}</p>
             <div className='memo-write-emoji-select-section'>
                 <p className='memo-write-emoji-select-section-text'>오늘 내 감정은?</p>
