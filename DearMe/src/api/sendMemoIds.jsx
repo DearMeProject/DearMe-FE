@@ -1,5 +1,5 @@
 import axios from 'axios';
-import getClientId from './clientId.jsx';
+import getClientId from './ClientId.jsx';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
