@@ -1,4 +1,4 @@
-import usePeriodTime from "../hooks/useTimePeriod";
+import usePeriodTime from "../hooks/useTimePeriod.jsx";
 import '../styles/Background.css'
 
 function Background() {

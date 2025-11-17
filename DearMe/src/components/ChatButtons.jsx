@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/ChatButtons.css';
-import MemoSelect from './MemoSelect';
+import MemoSelect from './MemoSelect.jsx';
 
 function GoChatButton({ memos, setButtonPressed, selectedMemoIds, setSelectedMemoIds, setChatResponse }) {
 

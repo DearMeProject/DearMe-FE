@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Background from './components/Background';
-import Header from './components/Header';
-import WelcomeSections from './components/WelcomeSections';
-import BottomBackground from './components/BottomBackground';
-import CalendarSection from './components/CalendarSection';
+import Background from './components/Background.jsx';
+import Header from './components/Header.jsx';
+import WelcomeSections from './components/WelcomeSections.jsx';
+import BottomBackground from './components/BottomBackground.jsx';
+import CalendarSection from './components/CalendarSection.jsx';
 import { ExitChatButton } from "./components/ChatButtons.jsx";
 import { GoChatButton } from "./components/ChatButtons.jsx";
 import ChatSection from './components/ChatSection.jsx';

@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import '../styles/MemoBox.css';
-import MemoCard from "./MemoCard";
-import MemoWrite from "./MemoWrite";
+import MemoCard from "./MemoCard.jsx";
+import MemoWrite from "./MemoWrite.jsx";
 
 function MemoBox({ refreshMemos, memosByDate, selectedDate, onClose }) {
     
