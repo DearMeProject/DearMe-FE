@@ -4,23 +4,6 @@ import MemoBox from "./MemoBox";
 import 'react-calendar/dist/Calendar.css';
 import '../styles/CalendarSection.css';
 
-// const TESTDATA = {
-//   status: 200,
-//   message: '조회 성공',
-//   data: {
-//     xClientId: 'abc123',
-//     memos: [
-//       { memoId: 123, date: '2025-11-8', emoji: "😊", title: '좋은 하루 가나다라' },
-//       { memoId: 124, date: '2025-11-10', emoji: "😢", title: '힘든 하루' },
-//       { memoId: 125, date: '2025-11-10', emoji: "😡", title: '짜증나는 하루' },
-//       { memoId: 126, date: '2025-11-11', emoji: "🤔", title: '고민' },
-//       { memoId: 127, date: '2025-11-12', emoji: "🎉", title: '파티' },
-//       { memoId: 128, date: '2025-11-13', emoji: "💻", title: '코딩' },
-//       { memoId: 129, date: '2025-11-14', emoji: "😴", title: '피곤함' },
-//     ]
-//   }
-// }
-
 const STRINGTOEMOJI = {
   'HAPPY':"😀",
   'NEUTRAL': '😐',
