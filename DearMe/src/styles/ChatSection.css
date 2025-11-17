@@ -1,0 +1,66 @@
+.chat-section-welcome-text {
+    color: #ffffff;
+    font-family: 'Gowun Batang';
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-top: 20px;
+
+    opacity: 0;
+    animation: fadeInUp-chatSectionWelcomeText 2s ease forwards;
+    animation-delay: 1s;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInUp-chatSectionWelcomeText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-text-container {
+    width: 70%;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+
+    opacity: 0;
+    animation: fadeInUp-chatTextContainer 2s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeInUp-chatTextContainer {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-text-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.chat-text-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.chat-text-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+}

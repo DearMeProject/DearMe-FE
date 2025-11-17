@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Background from './components/Background.jsx';
+import Header from './components/Header.jsx';
+import WelcomeSections from './components/WelcomeSections.jsx';
+import BottomBackground from './components/BottomBackground.jsx';
+import CalendarSection from './components/CalendarSection.jsx';
+import { ExitChatButton } from "./components/ChatButtons.jsx";
+import { GoChatButton } from "./components/ChatButtons.jsx";
+import ChatSection from './components/ChatSection.jsx';
+import './styles/App.css';
+import getMemos from './api/getMemos.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [memoList, setMemoList] = useState([]);
+  const refreshMemos = async () => {
+    const response = await getMemos();
+    setMemoList(response.data.data.memos);
+  }
+  const [buttonPressed, setButtonPressed] = useState(false);
+  const [selectedMemoIds, setSelectedMemoIds] = useState([]);
+  const [chatResponse, setChatResponse] = useState('');
+
+  useEffect(() => {
+    refreshMemos();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Background />
+      <Header />
+      <WelcomeSections />
+      <BottomBackground>
+        {!buttonPressed ?
+          <div className="content-stack-wrapper">
+            <CalendarSection memos={memoList} refreshMemos={refreshMemos} />
+            <div className="chat-button-container-below">
+              <GoChatButton
+                memos={memoList}
+                setButtonPressed={setButtonPressed}
+                selectedMemoIds={selectedMemoIds}
+                setSelectedMemoIds={setSelectedMemoIds}
+                setChatResponse={setChatResponse} />
+            </div>
+          </div>
+          :
+          <div className='chat-screen-container'>
+            <ChatSection
+              memos={memoList}
+              selectedMemoIds={selectedMemoIds}
+              chatResponse={chatResponse} />
+            <div className="chat-button-container-below">
+              <ExitChatButton
+                setButtonPressed={setButtonPressed}
+                setSelectedMemoIds={setSelectedMemoIds} />
+            </div>
+          </div>
+        }
+      </BottomBackground>
+    </div>
+  );
 }
 
-export default App
+export default App;
