@@ -1,7 +1,7 @@
 import '../styles/MemoCard.css';
 import { useState } from "react";
-import MemoRead from './MemoRead';
-import getMemoContent from '../api/getMemoContent';
+import MemoRead from './MemoRead.jsx';
+import getMemoContent from '../api/getMemoContent.jsx';
 
 const STRINGTOEMOJI = {
   'HAPPY':"😀",

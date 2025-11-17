@@ -1,5 +1,5 @@
 import '../styles/ChatSection.css';
-import { AIChatBox, UserChatBox } from './ChatBox';
+import { AIChatBox, UserChatBox } from './ChatBox.jsx';
 
 function ChatSection({ memos, selectedMemoIds, chatResponse }) {
 
