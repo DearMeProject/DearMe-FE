@@ -11,9 +11,8 @@ const STRINGTOEMOJI = {
     'ANGRY': '😡'
 }
 
-function MemoSelect({ memos, onClose, setButtonPressed }) {
+function MemoSelect({ memos, onClose, setButtonPressed, selectedMemoIds, setSelectedMemoIds, setChatResponse }) {
 
-    const [selectedMemoIds, setSelectedMemoIds] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const groupedMemos = memos.reduce((acc, memo) => {
@@ -47,7 +46,7 @@ function MemoSelect({ memos, onClose, setButtonPressed }) {
         try {
             const response = await sendMemoIds(selectedMemoIds);
             if (response.status === 200) {
-                console.log(response);
+                setChatResponse(response.data.counselResult);
                 return;
             }
             else alert("메모 전송에 실패하였습니다.")

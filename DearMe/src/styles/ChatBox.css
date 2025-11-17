@@ -1,0 +1,29 @@
+.ai-chat-box-container {
+    max-width: 500px;
+    align-self: flex-end;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    background: #CFCFCF;
+    border-radius: 10px;
+
+    font-family: 'Gowun Batang';
+    color: #000000;
+    text-align: left;
+}
+
+.user-chat-box-container {
+    max-width: 300px;
+    align-self: flex-start;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    background: #ffffff;
+    border-radius: 10px;
+
+    font-family: 'Gowun Batang';
+    color: #000000;
+    text-align: right;
+}
